@@ -9,13 +9,13 @@ function fazerTransacao($dados)
         // Inicia a transação
         $pdo->beginTransaction();
         $user_gratis = true;
-        // Etapa 1: Realize uma operação de consulta (seleção) usando uma transação
+        // Realize uma operação de consulta (seleção) na tabela user_gratis
         $consulta = $pdo->prepare("SELECT * FROM spotify.user_gratis WHERE cpf = ?");
         $consulta->execute([$dados['cpf']]);
         $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
 
         if (empty($resultado)) {
-            // Etapa 1: Realize uma operação de consulta (seleção) usando uma transação
+            // Realize uma operação de consulta (seleção) na tabela user_premium caso nn encontre na gratis
             $consulta = $pdo->prepare("SELECT * FROM spotify.user_premium WHERE cpf = ?");
             $consulta->execute([$dados['cpf']]);
             $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
@@ -65,7 +65,7 @@ function fazerTransacao($dados)
 
 // Exemplo de uso do método
 $dados = [
-    'cpf' => '123',
-    'nome' => 'novo valor'
+    'cpf' => '123987',
+    'nome' => 'novo valor teste'
 ];
 fazerTransacao($dados);

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$nome, $email, $id]);
     header('Location: read.php');
 } else {
-    // Exibir o formulário de edição preenchido com os dados atuais da música
+    // Exibir o formulário de edição preenchido com os dados atuais do user
     $id = $_GET['id'];
     $sql = "SELECT * FROM spotify.user_gratis WHERE id = ?";
     $stmt = $pdo->prepare($sql);

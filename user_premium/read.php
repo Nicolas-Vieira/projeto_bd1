@@ -2,7 +2,7 @@
 require '../db.php';
 include '../header.php';
 
-// Consulta para selecionar todas as usuários
+// Consulta para selecionar todos os usuários
 $sql = "SELECT * FROM spotify.user_premium";
 $stmt = $pdo->query($sql);
 ?>
